@@ -45,7 +45,13 @@ class VehicleListFragment : Fragment() {
             adapter = viewAdapter
         }
 
-        val call = getApiService().listVehicle
+        val call = getApiService().listVehicle(
+            icon = 1,
+            lang = "en",
+            forceStandard = 1,
+            outputFormat = "json",
+            appToken = "8qohg5a9c6q6x58szpyxizvp91yary3setxdxutl10dugtel1syjs6gmrp33oo40a356j2cxt6vdcpzg095drsym5blnyen0hi4bdq32j61clfux2i9vtuhr"
+        )
         call.enqueue(object : Callback<ApiResponse> {
             override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
                 response.body()?.vehicleList?.let {
