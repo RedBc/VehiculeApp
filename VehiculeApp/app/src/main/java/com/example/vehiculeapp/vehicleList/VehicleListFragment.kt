@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.vehiculeapp.R
 import com.example.vehiculeapp.api.ApiService
 import com.example.vehiculeapp.model.ApiResponse
@@ -55,6 +54,7 @@ class VehicleListFragment : Fragment() {
             }
 
             override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
+                Log.e("listVehicleApi", "error : ${t.message}")
             }
         })
     }
@@ -72,11 +72,5 @@ class VehicleListFragment : Fragment() {
             .build()
 
         return retrofit.create(ApiService::class.java)
-    }
-
-    companion object {
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            VehicleListFragment()
     }
 }
